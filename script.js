@@ -7,7 +7,6 @@ const dataPesawat = [
     cause: "Technical Failure & Pilot Error",
     fatal: 162,
     survivors: 0,
-    img: "photos/airasia.jpg"
   },
   {
     operator: "Lion Air",
@@ -17,7 +16,6 @@ const dataPesawat = [
     cause: "MCAS System Failure",
     fatal: 189,
     survivors: 0,
-    img: "photos/lionair.jpg"
   },
   {
     operator: "Sriwijaya Air",
@@ -27,29 +25,21 @@ const dataPesawat = [
     cause: "Autothrottle Failure",
     fatal: 62,
     survivors: 0,
-    img: "photos/sriwijaya.jpg"
   }
 ];
 
-const tableBody = document.querySelector("#crashTable tbody");
+const rows = document.querySelectorAll("#crashTable tr");
 
-dataPesawat.forEach(item => {
-  const row = document.createElement("tr");
+dataPesawat.forEach((item, index) => {
+  const descCell = rows[index].querySelector(".desc");
 
-  row.innerHTML = `
-    <td>
-      <img src="${item.img}">
-    </td>
-    <td class="desc">
-      <b>Operator :</b> ${item.operator}<br>
-      <b>Aircraft :</b> ${item.aircraft}<br>
-      <b>Date :</b> ${item.date}<br>
-      <b>Route :</b> ${item.route}<br>
-      <b>Crash Cause :</b> ${item.cause}<br>
-      <b>Total Fatal :</b> ${item.fatal}<br>
-      <b>Survivors :</b> ${item.survivors}
-    </td>
+  descCell.innerHTML = `
+    <b>Operator :</b> ${item.operator}<br>
+    <b>Aircraft :</b> ${item.aircraft}<br>
+    <b>Date :</b> ${item.date}<br>
+    <b>Route :</b> ${item.route}<br>
+    <b>Crash Cause :</b> ${item.cause}<br>
+    <b>Total Fatal :</b> ${item.fatal}<br>
+    <b>Survivors :</b> ${item.survivors}
   `;
-
-  tableBody.appendChild(row);
 });
